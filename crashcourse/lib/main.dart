@@ -1,3 +1,4 @@
+import 'package:crashcourse/page/home_page.dart';
 import 'package:crashcourse/page/login_page.dart';
 import 'package:crashcourse/styles/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,11 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Urbanist',
         scaffoldBackgroundColor: AppColors.background,
       ),
-      home: Loginpage() ,
+      initialRoute: '/',
+      routes: {
+        '/':(context) => Loginpage(),
+        '/home':(context) => HomePage(),
+      },
     );
   }
 }
