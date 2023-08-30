@@ -6,7 +6,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    var scaffold = Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.background,
         title: Text('5min flutter'),
@@ -15,10 +15,11 @@ class HomePage extends StatelessWidget {
           Icon(Icons.location_off_outlined),
         ],
       ),
-      body: Column(
+      body: ListView(
         children: mockUsersFromServer(),
-      ),
+      ), //stop lagging
     );
+    return scaffold;
   }
 
   Widget _userItem() {
@@ -32,14 +33,17 @@ class HomePage extends StatelessWidget {
         SizedBox(
           width: 16,
         ),
-        Text('Dannan Silva'),
+        Text(
+          'Dannan Silva',
+          style: TextStyle(color: Colors.white),
+        ),
       ],
     );
   }
 
   List<Widget> mockUsersFromServer() {
     List<Widget> users = [];
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 2000; i++) {
       users.add(_userItem());
     }
     return users;
